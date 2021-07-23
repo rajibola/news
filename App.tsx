@@ -6,18 +6,12 @@
  * @flow strict-local
  */
 
+import 'react-native-gesture-handler';
 import React from 'react';
-import {SafeAreaView, ScrollView, Text} from 'react-native';
+import {MainNavigator} from './src/navigation';
 
 const App = () => {
-  return (
-    <SafeAreaView>
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <Text>Hello From react native news</Text>
-        <Text>new</Text>
-      </ScrollView>
-    </SafeAreaView>
-  );
+  return <MainNavigator />;
 };
 
 export default App;
