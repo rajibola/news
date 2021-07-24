@@ -5,6 +5,7 @@ import {
   createStackNavigator,
   StackNavigationOptions,
 } from '@react-navigation/stack';
+import {Home, ViewNews} from '../screens';
 
 const options: StackNavigationOptions = {
   headerShown: false,
@@ -25,7 +26,8 @@ export const MainNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={options}>
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="ViewNews" component={ViewNews} />
       </Stack.Navigator>
     </NavigationContainer>
   );
