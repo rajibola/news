@@ -1,13 +1,27 @@
+import {useMemo} from 'react';
 import {StyleSheet} from 'react-native';
+import {Colors} from '../../constants/colors';
+import {wp, hp} from '../../utils/responsive-dimensions';
 
 export const styles = StyleSheet.create({
-  newsCard: {
-    width: 150,
+  masonry: {
+    paddingHorizontal: wp(8),
+    alignSelf: 'stretch',
+    justifyContent: 'space-between',
   },
-  container: {
+  textContainer: {
+    paddingHorizontal: wp(10),
+    paddingVertical: hp(15),
+  },
+  image: {
     flex: 1,
-    backgroundColor: 'white',
-    justifyContent: 'center',
-    alignItems: 'center',
+  },
+  newsCard: {
+    // width: wp(100),
+    marginBottom: hp(20),
+    borderRadius: hp(5),
+    backgroundColor: Colors.white,
+    overflow: 'hidden',
+    marginHorizontal: wp(8),
   },
 });
