@@ -65,6 +65,8 @@ export const Home: FC<HomeProps> = ({navigation}) => {
         onPressCancel={onClickCancel}
         onChangeAuthor={setNewsAuthor}
         onChangeContent={setSummary}
+        authorValue={newsAuthor}
+        summaryValue={summary}
       />
     </Container>
   );

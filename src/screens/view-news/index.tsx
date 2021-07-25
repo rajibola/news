@@ -1,5 +1,6 @@
-import {NavigationProp, RouteProp} from '@react-navigation/native';
-import React, {FC, useState} from 'react';
+import {NavigationProp} from '@react-navigation/native';
+import React, {useState} from 'react';
+import {FC} from 'react';
 import {
   Image,
   KeyboardAvoidingView,
@@ -7,23 +8,16 @@ import {
   Route,
   ScrollView,
   Text,
-  TextInput,
-  TouchableOpacity,
   View,
 } from 'react-native';
-import {Container, FontSize} from '../../components';
+import {CommentSection, Container, FontSize} from '../../components';
 import {DialogBox} from '../../components/DialogBox';
+import {ViewNewsProps} from '../../types/types';
 import {verifyImageFormat} from '../../utils';
 import {hp} from '../../utils/responsive-dimensions';
 import {styles} from './styles';
 
-export const ViewNews = ({
-  route,
-  navigation,
-}: {
-  route: Route;
-  navigation: NavigationProp<any>;
-}) => {
+export const ViewNews: FC<ViewNewsProps> = ({route, navigation}) => {
   const {item} = route.params;
   const [showDialog, setShowDialog] = useState<boolean>(false);
   const [newsAuthor, setNewsAuthor] = useState<string>(item.author);
@@ -84,27 +78,5 @@ export const ViewNews = ({
         summaryValue={summary}
       />
     </Container>
-  );
-};
-
-export const CommentSection = ({onPress}: {onPress: () => void}) => {
-  return (
-    <View style={styles.commentBox}>
-      <TextInput
-        multiline
-        style={styles.textInput}
-        numberOfLines={10}
-        placeholder="Enter your comment"
-      />
-
-      <TextInput
-        style={styles.textInputAuthor}
-        placeholder="Enter author's name"
-      />
-
-      <TouchableOpacity onPress={onPress} style={styles.button}>
-        <Text style={styles.buttonText}>Comment</Text>
-      </TouchableOpacity>
-    </View>
   );
 };

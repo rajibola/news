@@ -1,26 +1,27 @@
+import {RouteProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {TextStyle} from 'react-native';
 
 export interface ItemProps {
   id: Number;
-  title: String;
-  author: String;
-  summary: String;
-  content: String;
+  title: string;
+  author: string;
+  summary: string;
+  content: string;
   news_source_id: Number;
   aggregator: null;
-  url: String;
+  url: string;
   status_id: Number;
-  published_date: String;
-  created_at: String;
-  updated_at: String;
+  published_date: string;
+  created_at: string;
+  updated_at: string;
   additional_data: {
     banner: {
-      title: String;
-      url: String;
+      title: string;
+      url: string;
     };
     image: {
-      description: String;
+      description: string;
     };
   };
   media: [
@@ -29,33 +30,33 @@ export interface ItemProps {
       url: string;
       media_type: {
         id: Number;
-        type: String;
+        type: string;
       };
     },
   ];
   tags: [
     {
       id: Number;
-      name: String;
-      description: String;
+      name: string;
+      description: string;
       hidden: Boolean;
     },
   ];
   categories: [
     {
       id: Number;
-      name: String;
+      name: string;
       parent_category: null;
       default: Boolean;
       status_id: Number;
-      url: String;
+      url: string;
       rank: Number;
     },
   ];
   news_source: {
     id: Number;
-    name: String;
-    logo_url: String;
+    name: string;
+    logo_url: string;
   };
 }
 
@@ -83,8 +84,20 @@ export type ViewNewsNavigationProp = StackNavigationProp<
   'ViewNews'
 >;
 
+export type HomeNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'Home'
+>;
+
 export type HomeProps = {
+  navigation: HomeNavigationProp;
+};
+
+type ViewNewsRouteProp = RouteProp<RootStackParamList, 'ViewNews'>;
+
+export type ViewNewsProps = {
   navigation: ViewNewsNavigationProp;
+  route: ViewNewsRouteProp;
 };
 
 export type RootStackParamList = {

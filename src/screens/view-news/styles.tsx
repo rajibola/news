@@ -4,42 +4,11 @@ import {Colors} from '../../constants/colors';
 import {hp, wp} from '../../utils/responsive-dimensions';
 
 export const styles = StyleSheet.create({
-  textInputAuthor: {
-    height: hp(30),
-    borderWidth: 1,
-    marginBottom: hp(15),
-    paddingHorizontal: wp(10),
-  },
   scrollView: {
     flex: 1,
     backgroundColor: Colors.white,
   },
-  buttonText: {
-    color: Colors.white,
-    fontSize: hp(18),
-  },
-  button: {
-    height: hp(40),
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: Colors.grey03,
-    marginBottom: hp(30),
-    borderRadius: hp(3),
-  },
-  textInput: {
-    // paddingRight: 10,
-    height: hp(160),
-    paddingHorizontal: wp(10),
-    paddingVertical: hp(10),
-    borderWidth: 1,
-    borderRadius: hp(3),
-    marginBottom: hp(10),
-    fontSize: hp(14),
-    // flex: 2,
-    // textAlignVertical: 'top',
-  },
-  commentBox: {},
+
   summary: {
     fontSize: hp(20),
     lineHeight: hp(26),
