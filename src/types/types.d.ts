@@ -1,3 +1,4 @@
+import {StackNavigationProp} from '@react-navigation/stack';
 import {TextStyle} from 'react-native';
 
 export interface ItemProps {
@@ -65,6 +66,8 @@ export interface CardProps {
 
 export interface ContainerProps {
   onPressBack?: () => void | Boolean;
+  onPressRight?: () => void | Boolean;
+  rightText?: String;
   title: String;
   children: React.ReactNode;
 }
@@ -74,3 +77,17 @@ export interface FontSizeProps {
   text: String;
   style?: TextStyle;
 }
+
+export type ViewNewsNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'ViewNews'
+>;
+
+export type HomeProps = {
+  navigation: ViewNewsNavigationProp;
+};
+
+export type RootStackParamList = {
+  Home: undefined;
+  ViewNews: {item: ItemProps};
+};

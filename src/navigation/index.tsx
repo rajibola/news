@@ -1,26 +1,18 @@
-import React from 'react';
-import {View, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {
   createStackNavigator,
   StackNavigationOptions,
 } from '@react-navigation/stack';
+import React from 'react';
 import {Home, ViewNews} from '../screens';
+import {RootStackParamList} from '../types/types';
 
 const options: StackNavigationOptions = {
   headerShown: false,
   gestureEnabled: false,
 };
 
-function HomeScreen() {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Home Screen</Text>
-    </View>
-  );
-}
-
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<RootStackParamList>();
 
 export const MainNavigator = () => {
   return (

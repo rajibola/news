@@ -1,9 +1,19 @@
 import {StyleSheet} from 'react-native';
+import {globalStyles} from '../../constants';
 import {Colors} from '../../constants/colors';
 import {hp, wp} from '../../utils/responsive-dimensions';
 
 export const styles = StyleSheet.create({
-  scrollView: {flex: 1, backgroundColor: Colors.white},
+  textInputAuthor: {
+    height: hp(30),
+    borderWidth: 1,
+    marginBottom: hp(15),
+    paddingHorizontal: wp(10),
+  },
+  scrollView: {
+    flex: 1,
+    backgroundColor: Colors.white,
+  },
   buttonText: {
     color: Colors.white,
     fontSize: hp(18),

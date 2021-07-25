@@ -18,10 +18,10 @@ export const styles = StyleSheet.create({
   },
   newsCard: {
     // width: wp(100),
-    marginBottom: hp(20),
+    marginBottom: hp(7),
     borderRadius: hp(5),
     backgroundColor: Colors.white,
     overflow: 'hidden',
-    marginHorizontal: wp(8),
+    marginHorizontal: wp(4),
   },
 });
