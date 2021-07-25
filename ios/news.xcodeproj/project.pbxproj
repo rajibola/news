@@ -122,6 +122,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				888DD6F2B2014C5F3F5201BA /* Pods */,
+				87B07CCA614C4E0A9115AC51 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -137,6 +138,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		87B07CCA614C4E0A9115AC51 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		888DD6F2B2014C5F3F5201BA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,7 +153,6 @@
 				0AF8363EB778169D83F77208 /* Pods-news-newsTests.debug.xcconfig */,
 				69F2FB9047B84FC8BA089F06 /* Pods-news-newsTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

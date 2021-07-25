@@ -1,3 +1,5 @@
+import {TextStyle} from 'react-native';
+
 export interface ItemProps {
   id: Number;
   title: String;
@@ -62,6 +64,13 @@ export interface CardProps {
 }
 
 export interface ContainerProps {
+  onPressBack?: () => void | Boolean;
   title: String;
   children: React.ReactNode;
+}
+
+export interface FontSizeProps {
+  type: 'big' | 'small' | 'medium';
+  text: String;
+  style?: TextStyle;
 }

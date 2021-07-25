@@ -1,6 +1,23 @@
 import {StyleSheet} from 'react-native';
 import {Colors} from '../constants/colors';
-import {hp} from '../utils/responsive-dimensions';
+import {hp, wp} from '../utils/responsive-dimensions';
+
+export const FontSizeStyles = StyleSheet.create({
+  big: {
+    fontSize: hp(30),
+    color: Colors.grey03,
+  },
+
+  medium: {
+    fontSize: hp(16),
+    color: Colors.grey03,
+  },
+
+  small: {
+    fontSize: hp(20),
+    color: Colors.grey03,
+  },
+});
 
 export const ContainerStyles = StyleSheet.create({
   title: {
@@ -8,13 +25,14 @@ export const ContainerStyles = StyleSheet.create({
     fontSize: hp(20),
   },
   header: {
-    marginBottom: hp(20),
     height: hp(70),
     backgroundColor: Colors.grey04,
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'center',
     borderTopWidth: hp(30),
     borderTopColor: Colors.grey04,
+    flexDirection: 'row',
+    paddingHorizontal: wp(10),
   },
   container: {
     backgroundColor: Colors.grey02,
