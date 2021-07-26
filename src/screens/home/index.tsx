@@ -1,16 +1,20 @@
 import MasonryList from '@react-native-seoul/masonry-list';
 import React, {FC, useEffect, useMemo, useState} from 'react';
 import {ImageBackground, Text, TouchableOpacity, View} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 import {Container, DialogBox} from '../../components';
-import {CardProps, HomeProps, ItemProps} from '../../types/types.d';
-import {hp, apiService, verifyImageFormat} from '../../utils';
+import {RootDispatch, RootState} from '../../redux/store';
+import {CardProps, HomeProps} from '../../types/types.d';
+import {hp, verifyImageFormat} from '../../utils';
 import {styles} from './styles';
 
 export const Home: FC<HomeProps> = ({navigation}) => {
-  const [data, setData] = useState<ItemProps | any>();
   const [showDialog, setShowDialog] = useState<boolean>(false);
   const [newsAuthor, setNewsAuthor] = useState<string>('');
   const [summary, setSummary] = useState<string>('');
+
+  const news = useSelector((state: RootState) => state.news);
+  const dispatch = useDispatch<RootDispatch>();
 
   const onClickCreate = () => {
     setShowDialog(true);
@@ -21,16 +25,11 @@ export const Home: FC<HomeProps> = ({navigation}) => {
   };
 
   useEffect(() => {
-    apiService('/articles?page=1&size=50', 'get')
-      .then((res: unknown) => {
-        setData(res);
-      })
-      .catch(err => console.log('ERROR', err));
+    dispatch.news.load();
   }, []);
 
-  const _renderItem = ({item}: CardProps | any) => {
+  const _renderItem = ({item}: CardProps) => {
     const randomBool = useMemo(() => Math.random() < 0.5, []);
-    console.log('Image', item);
     return (
       <TouchableOpacity
         style={styles.newsCard}
@@ -49,12 +48,12 @@ export const Home: FC<HomeProps> = ({navigation}) => {
 
   return (
     <Container title="NEWS" rightText="Create" onPressRight={onClickCreate}>
-      {!data ? (
+      {!news.length ? (
         <Text>News is loading ...</Text>
       ) : (
         <MasonryList
           contentContainerStyle={styles.masonry}
-          data={data.data}
+          data={news.slice()}
           numColumns={2}
           renderItem={_renderItem}
         />
