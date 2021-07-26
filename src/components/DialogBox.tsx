@@ -9,15 +9,17 @@ export const DialogBox = ({
   onPressCancel,
   onChangeAuthor,
   onChangeContent,
+  onPressSubmit,
   authorValue,
   summaryValue,
 }: {
   show: boolean;
   onPressCancel: () => void;
-  onChangeAuthor?: (text: string) => void;
-  onChangeContent?: (text: string) => void;
-  authorValue?: string;
-  summaryValue?: string;
+  onChangeAuthor: (text: string) => void;
+  onChangeContent: (text: string) => void;
+  onPressSubmit: () => void;
+  authorValue: string;
+  summaryValue: string;
 }) => {
   return (
     <Modal transparent={true} visible={show}>
@@ -64,7 +66,12 @@ export const DialogBox = ({
                 containerStyle={{flex: 1}}
                 onPress={onPressCancel}
               />
-              <Button title="submit" type="solid" containerStyle={{flex: 1}} />
+              <Button
+                title="submit"
+                type="solid"
+                containerStyle={{flex: 1}}
+                onPress={onPressSubmit}
+              />
             </View>
           </KeyboardAvoidingView>
         </View>

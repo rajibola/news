@@ -7,7 +7,9 @@ import {
   Text,
   View,
 } from 'react-native';
+import {useDispatch} from 'react-redux';
 import {CommentSection, Container, FontSize, DialogBox} from '../../components';
+import {RootDispatch} from '../../redux/store';
 import {ViewNewsProps} from '../../types/types';
 import {verifyImageFormat, hp} from '../../utils';
 import {styles} from './styles';
@@ -18,11 +20,22 @@ export const ViewNews: FC<ViewNewsProps> = ({route, navigation}) => {
   const [newsAuthor, setNewsAuthor] = useState<string>(item.author);
   const [summary, setSummary] = useState<string>(item.summary);
 
+  const dispatch = useDispatch<RootDispatch>().news;
+
   const editNews = () => {
     setShowDialog(true);
   };
 
   const cancel = () => {
+    setShowDialog(false);
+  };
+
+  const onSubmit = () => {
+    dispatch.editNews({
+      ...item,
+      summary,
+      author: newsAuthor,
+    });
     setShowDialog(false);
   };
 
@@ -69,6 +82,7 @@ export const ViewNews: FC<ViewNewsProps> = ({route, navigation}) => {
         onPressCancel={cancel}
         onChangeAuthor={setNewsAuthor}
         onChangeContent={setSummary}
+        onPressSubmit={onSubmit}
         authorValue={newsAuthor}
         summaryValue={summary}
       />
