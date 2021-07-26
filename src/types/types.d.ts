@@ -1,9 +1,10 @@
 import {RouteProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {TextStyle} from 'react-native';
+import {State} from '../redux/store/news';
 
 export interface ItemProps {
-  id: Number;
+  id: number;
   title: string;
   author: string;
   summary: string;
@@ -62,7 +63,7 @@ export interface ItemProps {
 
 export interface CardProps {
   item: ItemProps;
-  index: Number;
+  index?: Number;
 }
 
 export interface ContainerProps {

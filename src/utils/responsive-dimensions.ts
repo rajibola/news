@@ -7,13 +7,15 @@ let screenWidth = Dimensions.get('window').width;
 // Retrieve initial screen's height
 let screenHeight = Dimensions.get('window').height;
 
+type DimensionType = string | number;
+
 /**
  * Converts provided width percentage to independent pixel (dp).
  * @param  {string} widthPercent The percentage of screen's width that UI element should cover
  *                               along with the percentage symbol (%).
  * @return {number}              The calculated dp depending on current device's screen width.
  */
-const widthPercentageToDP = (widthPercent: string | number) => {
+const widthPercentageToDP = (widthPercent: DimensionType) => {
   // Parse string percentage input and convert it to number.
   const elemWidth =
     typeof widthPercent === 'number' ? widthPercent : parseFloat(widthPercent);
@@ -29,7 +31,7 @@ const widthPercentageToDP = (widthPercent: string | number) => {
  *                                along with the percentage symbol (%).
  * @return {number}               The calculated dp depending on current device's screen height.
  */
-const heightPercentageToDP = (heightPercent: string | number) => {
+const heightPercentageToDP = (heightPercent: DimensionType) => {
   // Parse string percentage input and convert it to number.
   const elemHeight =
     typeof heightPercent === 'number'

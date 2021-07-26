@@ -1,20 +1,15 @@
-import {NavigationProp} from '@react-navigation/native';
-import React, {useState} from 'react';
-import {FC} from 'react';
+import React, {FC, useState} from 'react';
 import {
   Image,
   KeyboardAvoidingView,
   Platform,
-  Route,
   ScrollView,
   Text,
   View,
 } from 'react-native';
-import {CommentSection, Container, FontSize} from '../../components';
-import {DialogBox} from '../../components/DialogBox';
+import {CommentSection, Container, FontSize, DialogBox} from '../../components';
 import {ViewNewsProps} from '../../types/types';
-import {verifyImageFormat} from '../../utils';
-import {hp} from '../../utils/responsive-dimensions';
+import {verifyImageFormat, hp} from '../../utils';
 import {styles} from './styles';
 
 export const ViewNews: FC<ViewNewsProps> = ({route, navigation}) => {
