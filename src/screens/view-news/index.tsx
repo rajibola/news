@@ -7,13 +7,14 @@ import {
   Text,
   View,
 } from 'react-native';
+import {Button} from 'react-native-elements/dist/buttons/Button';
 import {useDispatch, useSelector} from 'react-redux';
 import {CommentSection, Container, DialogBox, FontSize} from '../../components';
 import {CommentContainer} from '../../components/CommentContainer';
 import {ImageComponent} from '../../components/ImageComponent';
 import {RootDispatch, RootState} from '../../redux/store';
-import {CommentProps, ItemProps, ViewNewsProps} from '../../types/types';
-import {generateUId, hp} from '../../utils';
+import {CommentProps, ViewNewsProps} from '../../types/types';
+import {generateUId, hp, wp} from '../../utils';
 import {styles} from './styles';
 
 export const ViewNews: FC<ViewNewsProps> = ({route, navigation}) => {
@@ -47,6 +48,11 @@ export const ViewNews: FC<ViewNewsProps> = ({route, navigation}) => {
       author: commentAuthor,
       content: comment,
     });
+  };
+
+  const onDeleteNews = async () => {
+    await dispatch.deleteNews({...item});
+    navigation.goBack();
   };
 
   const onDeleteComment = (comment: CommentProps) => {
@@ -101,6 +107,11 @@ export const ViewNews: FC<ViewNewsProps> = ({route, navigation}) => {
             <Text style={styles.absoluteView}>
               <Text style={styles.title}>{filteredNews?.title}</Text>
             </Text>
+            <Button
+              title="delete"
+              containerStyle={styles.deleteButton}
+              onPress={onDeleteNews}
+            />
           </View>
 
           <View style={styles.summaryContainer}>

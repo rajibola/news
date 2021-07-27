@@ -4,6 +4,13 @@ import {Colors} from '../../constants/colors';
 import {hp, wp} from '../../utils/responsive-dimensions';
 
 export const styles = StyleSheet.create({
+  deleteButton: {
+    position: 'absolute',
+    alignSelf: 'flex-end',
+    backgroundColor: 'red',
+    top: hp(15),
+    right: wp(15),
+  },
   scrollView: {
     flex: 1,
     backgroundColor: Colors.white,
