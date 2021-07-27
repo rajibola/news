@@ -1,45 +1,24 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {KeyboardAvoidingView, Modal, Platform, View} from 'react-native';
 import {Button, Input} from 'react-native-elements';
-import {Colors, globalStyles} from '../constants';
-import {hp, wp} from '../utils/responsive-dimensions';
+import {DialogBoxProps} from '../types/types';
+import {DialogBoxStyles as styles} from './styles';
 
-export const DialogBox = ({
+export const DialogBox: FC<DialogBoxProps> = ({
   show,
   onPressCancel,
   onChangeAuthor,
   onChangeContent,
   onPressSubmit,
+  onChangeTitle,
+  title,
   authorValue,
   summaryValue,
-}: {
-  show: boolean;
-  onPressCancel: () => void;
-  onChangeAuthor: (text: string) => void;
-  onChangeContent: (text: string) => void;
-  onPressSubmit: () => void;
-  authorValue?: string;
-  summaryValue: string;
 }) => {
   return (
     <Modal transparent={true} visible={show}>
-      <View
-        style={{
-          flex: 1,
-          justifyContent: 'center',
-          backgroundColor: 'rgba(0,0,0,0.2)',
-        }}>
-        <View
-          style={{
-            width: wp(300),
-            backgroundColor: Colors.white,
-            position: 'absolute',
-            alignSelf: 'center',
-            borderRadius: hp(5),
-            ...globalStyles.shadow,
-            paddingHorizontal: wp(20),
-            paddingVertical: hp(20),
-          }}>
+      <View style={styles.container}>
+        <View style={styles.boxContainer}>
           <KeyboardAvoidingView
             enabled
             keyboardVerticalOffset={23}
@@ -50,13 +29,20 @@ export const DialogBox = ({
               defaultValue={authorValue}
             />
 
+            {onChangeTitle && (
+              <Input
+                placeholder="Title"
+                multiline
+                onChangeText={onChangeTitle}
+                defaultValue={title}
+              />
+            )}
             <Input
               placeholder="Content"
               multiline
               onChangeText={onChangeContent}
               defaultValue={summaryValue}
             />
-
             <View
               style={{flexDirection: 'row', justifyContent: 'space-around'}}>
               <Button

@@ -1,6 +1,24 @@
 import {StyleSheet} from 'react-native';
-import {Colors} from '../constants/colors';
+import {globalStyles, Colors} from '../constants';
 import {hp, wp} from '../utils/responsive-dimensions';
+
+export const DialogBoxStyles = StyleSheet.create({
+  boxContainer: {
+    width: wp(300),
+    backgroundColor: Colors.white,
+    position: 'absolute',
+    alignSelf: 'center',
+    borderRadius: hp(5),
+    ...globalStyles.shadow,
+    paddingHorizontal: wp(20),
+    paddingVertical: hp(20),
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0,0,0,0.2)',
+  },
+});
 
 export const CommentSectionStyles = StyleSheet.create({
   buttonText: {

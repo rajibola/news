@@ -22,6 +22,8 @@ const model = {
         return news;
       }),
 
+    createNews: (state: State, payload: ItemProps) => [payload, ...state],
+
     addComment: (state: State, payload: CommentProps) =>
       state.map(news => {
         if (news.id === payload.newsId) {

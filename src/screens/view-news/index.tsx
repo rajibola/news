@@ -30,7 +30,7 @@ export const ViewNews: FC<ViewNewsProps> = ({route, navigation}) => {
   const news = useSelector((state: RootState) => state.news);
   const filteredNews = news.find(a => a.id === item.id);
 
-  console.log(newsAuthor);
+  console.log(item);
 
   const onPressEdit = (type: 'news' | 'comment', commentId?: string) => {
     setDialogType(type);

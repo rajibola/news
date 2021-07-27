@@ -2,6 +2,18 @@ import {RouteProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {TextStyle} from 'react-native';
 
+export interface DialogBoxProps {
+  show: boolean;
+  onPressCancel: () => void;
+  onChangeAuthor: (text: string) => void;
+  onChangeContent: (text: string) => void;
+  onChangeTitle?: (text: string) => void;
+  onPressSubmit: () => void;
+  authorValue?: string;
+  summaryValue: string;
+  title?: string;
+}
+
 export interface CommentSectionProps {
   onPress: () => void;
   onChangeAuthor: (text: string) => void;
