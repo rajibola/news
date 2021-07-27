@@ -1,8 +1,7 @@
 import MasonryList from '@react-native-seoul/masonry-list';
 import React, {FC, useEffect, useState} from 'react';
 import {Text} from 'react-native';
-import {Container, DialogBox} from '../../components';
-import {CardComponent} from '../../components/CardComponents';
+import {CardComponent, Container, DialogBox} from '../../components';
 import {useRedux} from '../../hooks/useRedux';
 import {newsModel} from '../../redux/store/api';
 import {CardProps, HomeProps as Props} from '../../types/types.d';

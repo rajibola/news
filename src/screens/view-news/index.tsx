@@ -8,9 +8,14 @@ import {
   View,
 } from 'react-native';
 import {Button} from 'react-native-elements/dist/buttons/Button';
-import {CommentSection, Container, DialogBox, FontSize} from '../../components';
-import {CommentContainer} from '../../components/CommentContainer';
-import {ImageComponent} from '../../components/ImageComponent';
+import {
+  CommentContainer,
+  CommentSection,
+  Container,
+  DialogBox,
+  FontSize,
+  ImageComponent,
+} from '../../components';
 import {useRedux} from '../../hooks/useRedux';
 import {CommentProps, ViewNewsProps as Props} from '../../types/types';
 import {generateUId, hp} from '../../utils';
@@ -26,9 +31,7 @@ export const ViewNews: FC<Props> = ({route, navigation}) => {
   const [comment, setComment] = useState<string>('');
   const [commentId, setCommentId] = useState<string | undefined>('');
 
-  const {news, dispatch} = useRedux();
-
-  const filteredNews = news.find(a => a.id === item.id);
+  const {news, dispatch, filteredResult} = useRedux(item.id);
 
   const onPressEdit = (type: 'news' | 'comment', commentId?: string) => {
     setDialogType(type);
@@ -106,7 +109,7 @@ export const ViewNews: FC<Props> = ({route, navigation}) => {
             <Text style={styles.absoluteView}>
               <FontSize
                 style={styles.title}
-                text={filteredNews?.title}
+                text={filteredResult?.title}
                 type="big"
               />
             </Text>
@@ -120,23 +123,23 @@ export const ViewNews: FC<Props> = ({route, navigation}) => {
           <View style={styles.summaryContainer}>
             <View style={styles.line}>
               <FontSize
-                text={`author: ${filteredNews?.author}`}
+                text={`author: ${filteredResult?.author}`}
                 type="x-small"
               />
               <FontSize
-                text={` source: ${filteredNews?.news_source.name}`}
+                text={` source: ${filteredResult?.news_source.name}`}
                 type="x-small"
               />
             </View>
             <FontSize
               type="medium"
-              text={filteredNews?.summary}
+              text={filteredResult?.summary}
               style={styles.summary}
             />
 
             <FontSize text="Comments" type="medium" style={styles.comment} />
             <FlatList
-              data={filteredNews?.comments}
+              data={filteredResult?.comments}
               renderItem={({item: comment}) => (
                 <CommentContainer
                   onPressEdit={() => onPressEdit('comment', comment.id)}
