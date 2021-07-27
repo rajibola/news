@@ -1,10 +1,9 @@
 import MasonryList from '@react-native-seoul/masonry-list';
 import React, {FC, useEffect, useState} from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
-import {Container, DialogBox, FontSize} from '../../components';
-import {ImageComponent} from '../../components/ImageComponent';
-import {RootDispatch, RootState} from '../../redux/store';
+import {Text} from 'react-native';
+import {Container, DialogBox} from '../../components';
+import {CardComponent} from '../../components/CardComponents';
+import {useRedux} from '../../hooks/useRedux';
 import {newsModel} from '../../redux/store/api';
 import {CardProps, HomeProps as Props} from '../../types/types.d';
 import {generateNumberId} from '../../utils';
@@ -16,9 +15,7 @@ export const Home: FC<Props> = ({navigation}) => {
   const [title, setTitle] = useState<string>('');
   const [summary, setSummary] = useState<string>('');
 
-  const news = useSelector((state: RootState) => state.news);
-
-  const dispatch = useDispatch<RootDispatch>().news;
+  const {dispatch, news} = useRedux();
 
   const onSubmit = () => {
     dispatch.createNews({
@@ -43,17 +40,7 @@ export const Home: FC<Props> = ({navigation}) => {
   }, []);
 
   const _renderItem = ({item}: CardProps) => {
-    return (
-      <TouchableOpacity
-        style={styles.newsCard}
-        key={item.id}
-        onPress={() => navigation.navigate('ViewNews', {item})}>
-        <ImageComponent uri={item.media[0].url} type="small" />
-        <View style={styles.textContainer}>
-          <FontSize text={item.title} type="small" />
-        </View>
-      </TouchableOpacity>
-    );
+    return <CardComponent navigation={navigation} item={item} />;
   };
 
   return (

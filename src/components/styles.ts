@@ -2,6 +2,21 @@ import {StyleSheet} from 'react-native';
 import {globalStyles, Colors} from '../constants';
 import {hp, wp} from '../utils/responsive-dimensions';
 
+export const CardComponentStyles = StyleSheet.create({
+  textContainer: {
+    paddingHorizontal: wp(10),
+    paddingVertical: hp(15),
+  },
+
+  newsCard: {
+    marginBottom: hp(7),
+    borderRadius: hp(5),
+    backgroundColor: Colors.white,
+    overflow: 'hidden',
+    marginHorizontal: wp(4),
+  },
+});
+
 export const ImageComponentStyles = StyleSheet.create({
   small: {
     height: hp(180),

@@ -100,6 +100,12 @@ export interface ItemProps {
   }[];
 }
 
+export interface CardComponentProps {
+  item: ItemProps;
+  index?: Number;
+  navigation: HomeNavigationProp;
+}
+
 export interface CardProps {
   item: ItemProps;
   index?: Number;

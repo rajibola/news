@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: wp(8),
     alignSelf: 'stretch',
     justifyContent: 'space-between',
+    paddingTop: hp(12),
   },
   textContainer: {
     paddingHorizontal: wp(10),

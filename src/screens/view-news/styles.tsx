@@ -4,6 +4,7 @@ import {Colors} from '../../constants/colors';
 import {hp, wp} from '../../utils/responsive-dimensions';
 
 export const styles = StyleSheet.create({
+  comment: {borderBottomWidth: 1, marginBottom: hp(10)},
   deleteButton: {
     position: 'absolute',
     alignSelf: 'flex-end',
@@ -29,6 +30,8 @@ export const styles = StyleSheet.create({
     borderBottomWidth: hp(0.5),
     borderBottomColor: Colors.grey01,
     flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingVertical: hp(3),
   },
 
   title: {

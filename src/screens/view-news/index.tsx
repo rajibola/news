@@ -8,11 +8,10 @@ import {
   View,
 } from 'react-native';
 import {Button} from 'react-native-elements/dist/buttons/Button';
-import {useDispatch, useSelector} from 'react-redux';
 import {CommentSection, Container, DialogBox, FontSize} from '../../components';
 import {CommentContainer} from '../../components/CommentContainer';
 import {ImageComponent} from '../../components/ImageComponent';
-import {RootDispatch, RootState} from '../../redux/store';
+import {useRedux} from '../../hooks/useRedux';
 import {CommentProps, ViewNewsProps as Props} from '../../types/types';
 import {generateUId, hp} from '../../utils';
 import {styles} from './styles';
@@ -27,8 +26,8 @@ export const ViewNews: FC<Props> = ({route, navigation}) => {
   const [comment, setComment] = useState<string>('');
   const [commentId, setCommentId] = useState<string | undefined>('');
 
-  const dispatch = useDispatch<RootDispatch>().news;
-  const news = useSelector((state: RootState) => state.news);
+  const {news, dispatch} = useRedux();
+
   const filteredNews = news.find(a => a.id === item.id);
 
   const onPressEdit = (type: 'news' | 'comment', commentId?: string) => {
@@ -120,8 +119,14 @@ export const ViewNews: FC<Props> = ({route, navigation}) => {
 
           <View style={styles.summaryContainer}>
             <View style={styles.line}>
-              <Text>author: {filteredNews?.author}</Text>
-              <Text>source: {filteredNews?.news_source.name}</Text>
+              <FontSize
+                text={`author: ${filteredNews?.author}`}
+                type="x-small"
+              />
+              <FontSize
+                text={` source: ${filteredNews?.news_source.name}`}
+                type="x-small"
+              />
             </View>
             <FontSize
               type="medium"
@@ -129,11 +134,7 @@ export const ViewNews: FC<Props> = ({route, navigation}) => {
               style={styles.summary}
             />
 
-            <FontSize
-              text="Comments"
-              type="medium"
-              style={{borderBottomWidth: 1, marginBottom: hp(10)}}
-            />
+            <FontSize text="Comments" type="medium" style={styles.comment} />
             <FlatList
               data={filteredNews?.comments}
               renderItem={({item: comment}) => (
