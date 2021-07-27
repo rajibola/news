@@ -6,11 +6,11 @@ import {Container, DialogBox, FontSize} from '../../components';
 import {ImageComponent} from '../../components/ImageComponent';
 import {RootDispatch, RootState} from '../../redux/store';
 import {newsModel} from '../../redux/store/api';
-import {CardProps, HomeProps} from '../../types/types.d';
+import {CardProps, HomeProps as Props} from '../../types/types.d';
 import {generateNumberId} from '../../utils';
 import {styles} from './styles';
 
-export const Home: FC<HomeProps> = ({navigation}) => {
+export const Home: FC<Props> = ({navigation}) => {
   const [showDialog, setShowDialog] = useState<boolean>(false);
   const [author, setAuthor] = useState<string>('');
   const [title, setTitle] = useState<string>('');

@@ -13,11 +13,11 @@ import {CommentSection, Container, DialogBox, FontSize} from '../../components';
 import {CommentContainer} from '../../components/CommentContainer';
 import {ImageComponent} from '../../components/ImageComponent';
 import {RootDispatch, RootState} from '../../redux/store';
-import {CommentProps, ViewNewsProps} from '../../types/types';
+import {CommentProps, ViewNewsProps as Props} from '../../types/types';
 import {generateUId, hp} from '../../utils';
 import {styles} from './styles';
 
-export const ViewNews: FC<ViewNewsProps> = ({route, navigation}) => {
+export const ViewNews: FC<Props> = ({route, navigation}) => {
   const {item} = route.params;
   const [showDialog, setShowDialog] = useState<boolean>(false);
   const [dialogType, setDialogType] = useState<'news' | 'comment'>();

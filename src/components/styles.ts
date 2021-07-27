@@ -16,6 +16,7 @@ export const ImageComponentStyles = StyleSheet.create({
 });
 
 export const DialogBoxStyles = StyleSheet.create({
+  buttonContainer: {flexDirection: 'row', justifyContent: 'space-around'},
   boxContainer: {
     width: wp(300),
     backgroundColor: Colors.white,
@@ -54,7 +55,7 @@ export const CommentSectionStyles = StyleSheet.create({
     paddingHorizontal: wp(10),
   },
   multilineInput: {
-    height: hp(160),
+    height: hp(100),
     paddingHorizontal: wp(10),
     paddingVertical: hp(10),
     borderWidth: 1,
@@ -65,6 +66,7 @@ export const CommentSectionStyles = StyleSheet.create({
 });
 
 export const CommentContainerStyles = StyleSheet.create({
+  avatar: {backgroundColor: Colors.grey02, marginRight: wp(10)},
   solidButton: {
     backgroundColor: 'rgb(45, 45, 211)',
     borderColor: 'red',

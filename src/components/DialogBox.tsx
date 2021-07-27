@@ -43,8 +43,7 @@ export const DialogBox: FC<Props> = ({
               onChangeText={onChangeContent}
               defaultValue={summaryValue}
             />
-            <View
-              style={{flexDirection: 'row', justifyContent: 'space-around'}}>
+            <View style={styles.buttonContainer}>
               <Button
                 title="cancel"
                 type="outline"

@@ -2,6 +2,11 @@ import {RouteProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {TextStyle} from 'react-native';
 
+export interface ImageComponentProps {
+  uri: string;
+  type: 'big' | 'small';
+}
+
 export type CommentContainerProps = {
   onPressDelete?: () => void;
   onPressEdit?: () => void;

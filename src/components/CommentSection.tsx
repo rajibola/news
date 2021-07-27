@@ -13,7 +13,7 @@ export const CommentSection: FC<Props> = ({
       <TextInput
         multiline
         style={styles.multilineInput}
-        numberOfLines={10}
+        numberOfLines={4}
         placeholder="Enter your comment"
         onChangeText={onChangeContent}
       />

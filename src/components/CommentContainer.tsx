@@ -4,7 +4,7 @@ import {Avatar, Button} from 'react-native-elements';
 import {FontSize} from '.';
 import {Colors} from '../constants';
 import {CommentContainerProps as Props} from '../types/types';
-import {hp, wp} from '../utils';
+import {hp} from '../utils';
 import {CommentContainerStyles as styles} from './styles';
 
 export const CommentContainer: FC<Props> = ({
@@ -20,7 +20,7 @@ export const CommentContainer: FC<Props> = ({
         rounded
         title={author?.charAt(0)}
         titleStyle={{color: Colors.grey03}}
-        containerStyle={{backgroundColor: Colors.grey02, marginRight: wp(10)}}
+        containerStyle={styles.avatar}
       />
       <View>
         <FontSize type="x-small" text={comment} style={{fontStyle: 'italic'}} />
