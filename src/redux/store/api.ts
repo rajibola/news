@@ -8,5 +8,8 @@ type UserResponse = {
 export const loadNews = async () => {
   const result = await apiService('/articles?page=1&size=50', 'get');
   const data = (await result) as UserResponse;
-  return data.data as ReadonlyArray<ItemProps>;
+  return data.data.map(news => ({
+    ...news,
+    comments: [],
+  })) as ReadonlyArray<ItemProps>;
 };

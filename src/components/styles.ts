@@ -2,6 +2,65 @@ import {StyleSheet} from 'react-native';
 import {Colors} from '../constants/colors';
 import {hp, wp} from '../utils/responsive-dimensions';
 
+export const CommentSectionStyles = StyleSheet.create({
+  buttonText: {
+    color: Colors.white,
+    fontSize: hp(18),
+  },
+  buttonContainer: {
+    height: hp(40),
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.grey03,
+    marginBottom: hp(30),
+    borderRadius: hp(3),
+  },
+  authorInput: {
+    height: hp(30),
+    borderWidth: 1,
+    marginBottom: hp(15),
+    paddingHorizontal: wp(10),
+  },
+  multilineInput: {
+    height: hp(160),
+    paddingHorizontal: wp(10),
+    paddingVertical: hp(10),
+    borderWidth: 1,
+    borderRadius: hp(3),
+    marginBottom: hp(10),
+    fontSize: hp(14),
+  },
+});
+
+export const CommentContainerStyles = StyleSheet.create({
+  solidButton: {
+    backgroundColor: 'rgb(45, 45, 211)',
+    borderColor: 'red',
+    width: wp(80),
+    height: hp(30),
+    padding: 0,
+  },
+  redButton: {
+    borderColor: 'red',
+    width: wp(80),
+    height: hp(30),
+    padding: 0,
+    marginRight: wp(10),
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: hp(10),
+  },
+  container: {
+    flexDirection: 'row',
+    paddingHorizontal: wp(15),
+    marginRight: wp(20),
+    marginBottom: hp(10),
+  },
+});
+
 export const FontSizeStyles = StyleSheet.create({
   big: {
     fontSize: hp(30),
@@ -10,11 +69,19 @@ export const FontSizeStyles = StyleSheet.create({
 
   medium: {
     fontSize: hp(16),
+    lineHeight: hp(20),
     color: Colors.grey03,
   },
 
   small: {
-    fontSize: hp(20),
+    fontSize: hp(14),
+    lineHeight: hp(18),
+    color: Colors.grey03,
+  },
+
+  'x-small': {
+    fontSize: hp(12),
+    lineHeight: hp(14),
     color: Colors.grey03,
   },
 });

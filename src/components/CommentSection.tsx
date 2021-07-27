@@ -1,57 +1,31 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Text, TextInput, TouchableOpacity, View} from 'react-native';
-import {Colors} from '../constants';
-import {hp, wp} from '../utils';
+import {CommentSectionProps} from '../types/types';
+import {CommentSectionStyles as styles} from './styles';
 
-export const CommentSection = ({onPress}: {onPress: () => void}) => {
+export const CommentSection: FC<CommentSectionProps> = ({
+  onPress,
+  onChangeAuthor,
+  onChangeContent,
+}) => {
   return (
     <View>
       <TextInput
         multiline
-        style={{
-          // paddingRight: 10,
-          height: hp(160),
-          paddingHorizontal: wp(10),
-          paddingVertical: hp(10),
-          borderWidth: 1,
-          borderRadius: hp(3),
-          marginBottom: hp(10),
-          fontSize: hp(14),
-          // flex: 2,
-          // textAlignVertical: 'top',
-        }}
+        style={styles.multilineInput}
         numberOfLines={10}
         placeholder="Enter your comment"
+        onChangeText={onChangeContent}
       />
 
       <TextInput
-        style={{
-          height: hp(30),
-          borderWidth: 1,
-          marginBottom: hp(15),
-          paddingHorizontal: wp(10),
-        }}
+        style={styles.authorInput}
         placeholder="Enter author's name"
+        onChangeText={onChangeAuthor}
       />
 
-      <TouchableOpacity
-        onPress={onPress}
-        style={{
-          height: hp(40),
-          flex: 1,
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundColor: Colors.grey03,
-          marginBottom: hp(30),
-          borderRadius: hp(3),
-        }}>
-        <Text
-          style={{
-            color: Colors.white,
-            fontSize: hp(18),
-          }}>
-          Comment
-        </Text>
+      <TouchableOpacity onPress={onPress} style={styles.buttonContainer}>
+        <Text style={styles.buttonText}>Comment</Text>
       </TouchableOpacity>
     </View>
   );

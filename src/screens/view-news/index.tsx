@@ -1,5 +1,6 @@
 import React, {FC, useState} from 'react';
 import {
+  FlatList,
   Image,
   KeyboardAvoidingView,
   Platform,
@@ -7,23 +8,47 @@ import {
   Text,
   View,
 } from 'react-native';
-import {useDispatch} from 'react-redux';
-import {CommentSection, Container, FontSize, DialogBox} from '../../components';
-import {RootDispatch} from '../../redux/store';
+import {useDispatch, useSelector} from 'react-redux';
+import {CommentSection, Container, DialogBox, FontSize} from '../../components';
+import {CommentContainer} from '../../components/CommentContainer';
+import {RootDispatch, RootState} from '../../redux/store';
 import {ViewNewsProps} from '../../types/types';
-import {verifyImageFormat, hp} from '../../utils';
+import {generateUId, hp, verifyImageFormat} from '../../utils';
 import {styles} from './styles';
 
 export const ViewNews: FC<ViewNewsProps> = ({route, navigation}) => {
   const {item} = route.params;
   const [showDialog, setShowDialog] = useState<boolean>(false);
-  const [newsAuthor, setNewsAuthor] = useState<string>(item.author);
-  const [summary, setSummary] = useState<string>(item.summary);
+  const [dialogType, setDialogType] = useState<'news' | 'comment'>();
+  const [newsAuthor, setNewsAuthor] = useState<string | undefined>('');
+  const [summary, setSummary] = useState<string>('');
+  const [commentAuthor, setCommentAuthor] = useState<string>('');
+  const [comment, setComment] = useState<string>('');
+  const [commentId, setCommentId] = useState<string | undefined>('');
 
   const dispatch = useDispatch<RootDispatch>().news;
+  const news = useSelector((state: RootState) => state.news);
+  const filteredNews = news.find(a => a.id === item.id);
 
-  const editNews = () => {
+  console.log(newsAuthor);
+
+  const onPressEdit = (type: 'news' | 'comment', commentId?: string) => {
+    setDialogType(type);
+    if (type === 'comment') {
+      setCommentId(commentId);
+      setSummary('');
+      setNewsAuthor('');
+    }
     setShowDialog(true);
+  };
+
+  const onAddComment = () => {
+    dispatch.addComment({
+      newsId: item.id,
+      id: generateUId(),
+      author: commentAuthor,
+      content: comment,
+    });
   };
 
   const cancel = () => {
@@ -31,11 +56,30 @@ export const ViewNews: FC<ViewNewsProps> = ({route, navigation}) => {
   };
 
   const onSubmit = () => {
-    dispatch.editNews({
-      ...item,
-      summary,
-      author: newsAuthor,
-    });
+    switch (dialogType) {
+      case 'news':
+        dispatch.editNews({
+          ...item,
+          summary,
+          author: newsAuthor,
+        });
+        break;
+
+      case 'comment':
+        setNewsAuthor('');
+        setSummary('');
+        dispatch.editComment({
+          newsId: item.id,
+          id: commentId,
+          author: newsAuthor,
+          content: summary,
+        });
+        break;
+
+      default:
+        break;
+    }
+
     setShowDialog(false);
   };
 
@@ -44,7 +88,7 @@ export const ViewNews: FC<ViewNewsProps> = ({route, navigation}) => {
       title="VIEW NEWS"
       onPressBack={navigation.goBack}
       rightText="Edit"
-      onPressRight={editNews}>
+      onPressRight={() => onPressEdit('news')}>
       <KeyboardAvoidingView
         enabled
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
@@ -58,21 +102,42 @@ export const ViewNews: FC<ViewNewsProps> = ({route, navigation}) => {
               style={styles.image}
             />
             <Text style={styles.absoluteView}>
-              <Text style={styles.title}>{item.title}</Text>
+              <Text style={styles.title}>{filteredNews?.title}</Text>
             </Text>
           </View>
 
           <View style={styles.summaryContainer}>
             <View style={styles.line}>
-              <Text>author: {item.author}</Text>
-              <Text>source: {item.news_source.name}</Text>
+              <Text>author: {filteredNews?.author}</Text>
+              <Text>source: {filteredNews?.news_source.name}</Text>
             </View>
             <FontSize
               type="medium"
-              text={item.summary}
+              text={filteredNews?.summary}
               style={styles.summary}
             />
-            <CommentSection onPress={() => null} />
+
+            <FontSize
+              text="Comments"
+              type="medium"
+              style={{borderBottomWidth: 1, marginBottom: hp(10)}}
+            />
+            <FlatList
+              data={filteredNews?.comments}
+              renderItem={({item}) => (
+                <CommentContainer
+                  onPressEdit={() => onPressEdit('comment', item.id)}
+                  comment={item.content}
+                  author={item.author}
+                />
+              )}
+            />
+
+            <CommentSection
+              onPress={onAddComment}
+              onChangeAuthor={setCommentAuthor}
+              onChangeContent={setComment}
+            />
           </View>
         </ScrollView>
       </KeyboardAvoidingView>

@@ -18,7 +18,7 @@ export const DialogBox = ({
   onChangeAuthor: (text: string) => void;
   onChangeContent: (text: string) => void;
   onPressSubmit: () => void;
-  authorValue: string;
+  authorValue?: string;
   summaryValue: string;
 }) => {
   return (

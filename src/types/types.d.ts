@@ -1,12 +1,24 @@
 import {RouteProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {TextStyle} from 'react-native';
-import {State} from '../redux/store/news';
+
+export interface CommentSectionProps {
+  onPress: () => void;
+  onChangeAuthor: (text: string) => void;
+  onChangeContent: (text: string) => void;
+}
+
+export interface CommentProps {
+  newsId: number;
+  author?: string;
+  content: string;
+  id?: string;
+}
 
 export interface ItemProps {
   id: number;
   title: string;
-  author: string;
+  author?: string;
   summary: string;
   content: string;
   news_source_id: Number;
@@ -25,27 +37,24 @@ export interface ItemProps {
       description: string;
     };
   };
-  media: [
-    {
+  media: {
+    id: Number;
+    url: string;
+    media_type: {
       id: Number;
-      url: string;
-      media_type: {
-        id: Number;
-        type: string;
-      };
-    },
-  ];
-  tags: [
-    {
-      id: Number;
-      name: string;
-      description: string;
-      hidden: Boolean;
-    },
-  ];
+      type: string;
+    };
+  }[];
+  tags: {
+    id: Number;
+    name: string;
+    description: string;
+    hidden: Boolean;
+  }[];
+
   categories: [
     {
-      id: Number;
+      id: number;
       name: string;
       parent_category: null;
       default: Boolean;
@@ -59,6 +68,12 @@ export interface ItemProps {
     name: string;
     logo_url: string;
   };
+
+  comments: {
+    author?: string;
+    content?: string;
+    id?: string;
+  }[];
 }
 
 export interface CardProps {
@@ -75,8 +90,8 @@ export interface ContainerProps {
 }
 
 export interface FontSizeProps {
-  type: 'big' | 'small' | 'medium';
-  text: String;
+  type: 'big' | 'small' | 'medium' | 'x-small';
+  text: string | undefined;
   style?: TextStyle;
 }
 
