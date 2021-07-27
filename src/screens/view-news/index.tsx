@@ -1,7 +1,6 @@
 import React, {FC, useState} from 'react';
 import {
   FlatList,
-  Image,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
@@ -11,9 +10,10 @@ import {
 import {useDispatch, useSelector} from 'react-redux';
 import {CommentSection, Container, DialogBox, FontSize} from '../../components';
 import {CommentContainer} from '../../components/CommentContainer';
+import {ImageComponent} from '../../components/ImageComponent';
 import {RootDispatch, RootState} from '../../redux/store';
 import {ViewNewsProps} from '../../types/types';
-import {generateUId, hp, verifyImageFormat} from '../../utils';
+import {generateUId, hp} from '../../utils';
 import {styles} from './styles';
 
 export const ViewNews: FC<ViewNewsProps> = ({route, navigation}) => {
@@ -95,12 +95,7 @@ export const ViewNews: FC<ViewNewsProps> = ({route, navigation}) => {
         style={{flexGrow: 1}}>
         <ScrollView style={styles.scrollView}>
           <View style={{position: 'relative', height: hp(300)}}>
-            <Image
-              source={{
-                uri: verifyImageFormat(item.media[0].url),
-              }}
-              style={styles.image}
-            />
+            <ImageComponent uri={item.media[0].url} type="big" />
             <Text style={styles.absoluteView}>
               <Text style={styles.title}>{filteredNews?.title}</Text>
             </Text>

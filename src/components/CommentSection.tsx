@@ -1,9 +1,9 @@
 import React, {FC} from 'react';
 import {Text, TextInput, TouchableOpacity, View} from 'react-native';
-import {CommentSectionProps} from '../types/types';
+import {CommentSectionProps as Props} from '../types/types';
 import {CommentSectionStyles as styles} from './styles';
 
-export const CommentSection: FC<CommentSectionProps> = ({
+export const CommentSection: FC<Props> = ({
   onPress,
   onChangeAuthor,
   onChangeContent,

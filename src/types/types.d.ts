@@ -2,6 +2,13 @@ import {RouteProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {TextStyle} from 'react-native';
 
+export type CommentContainerProps = {
+  onPressDelete?: () => void;
+  onPressEdit?: () => void;
+  author?: string;
+  comment?: string;
+};
+
 export interface DialogBoxProps {
   show: boolean;
   onPressCancel: () => void;

@@ -1,12 +1,13 @@
 import MasonryList from '@react-native-seoul/masonry-list';
 import React, {FC, useEffect, useState} from 'react';
-import {ImageBackground, Text, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {Container, DialogBox} from '../../components';
+import {Container, DialogBox, FontSize} from '../../components';
+import {ImageComponent} from '../../components/ImageComponent';
 import {RootDispatch, RootState} from '../../redux/store';
 import {newsModel} from '../../redux/store/api';
 import {CardProps, HomeProps} from '../../types/types.d';
-import {generateNumberId, hp, verifyImageFormat} from '../../utils';
+import {generateNumberId} from '../../utils';
 import {styles} from './styles';
 
 export const Home: FC<HomeProps> = ({navigation}) => {
@@ -42,18 +43,14 @@ export const Home: FC<HomeProps> = ({navigation}) => {
   }, []);
 
   const _renderItem = ({item}: CardProps) => {
-    // const randomBool = () => Math.random() < 0.5,;
     return (
       <TouchableOpacity
         style={styles.newsCard}
         key={item.id}
         onPress={() => navigation.navigate('ViewNews', {item})}>
-        <ImageBackground
-          source={{uri: verifyImageFormat(item.media[0].url)}}
-          style={[styles.image, {height: hp(180)}]}
-        />
+        <ImageComponent uri={item.media[0].url} type="small" />
         <View style={styles.textContainer}>
-          <Text>{item.title}</Text>
+          <FontSize text={item.title} type="medium" />
         </View>
       </TouchableOpacity>
     );

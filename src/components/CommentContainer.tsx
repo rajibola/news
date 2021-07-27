@@ -3,17 +3,13 @@ import {View} from 'react-native';
 import {Avatar, Button} from 'react-native-elements';
 import {FontSize} from '.';
 import {Colors} from '../constants';
+import {CommentContainerProps as Props} from '../types/types';
 import {hp, wp} from '../utils';
 import {CommentContainerStyles as styles} from './styles';
 
-export type CommentContainerProps = {
-  onPressEdit?: () => void;
-  author?: string;
-  comment?: string;
-};
-
-export const CommentContainer: FC<CommentContainerProps> = ({
+export const CommentContainer: FC<Props> = ({
   onPressEdit,
+  onPressDelete,
   author,
   comment,
 }) => {
@@ -22,7 +18,7 @@ export const CommentContainer: FC<CommentContainerProps> = ({
       <Avatar
         size="small"
         rounded
-        title="M"
+        title={author?.charAt(0)}
         titleStyle={{color: Colors.grey03}}
         containerStyle={{backgroundColor: Colors.grey02, marginRight: wp(10)}}
       />
@@ -41,6 +37,7 @@ export const CommentContainer: FC<CommentContainerProps> = ({
             type="outline"
             buttonStyle={styles.redButton}
             titleStyle={{color: 'red'}}
+            onPress={onPressDelete}
           />
 
           <Button

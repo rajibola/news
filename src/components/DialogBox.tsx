@@ -1,10 +1,10 @@
 import React, {FC} from 'react';
 import {KeyboardAvoidingView, Modal, Platform, View} from 'react-native';
 import {Button, Input} from 'react-native-elements';
-import {DialogBoxProps} from '../types/types';
+import {DialogBoxProps as Props} from '../types/types';
 import {DialogBoxStyles as styles} from './styles';
 
-export const DialogBox: FC<DialogBoxProps> = ({
+export const DialogBox: FC<Props> = ({
   show,
   onPressCancel,
   onChangeAuthor,

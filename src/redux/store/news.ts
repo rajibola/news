@@ -9,6 +9,24 @@ const model = {
   reducers: {
     loaded: (state: State, payload: ReadonlyArray<ItemProps>) => payload,
 
+    deleteNews: (state: State, payload: ItemProps) =>
+      state.filter(news => news.id !== payload.id),
+
+    deleteComment: (state: State, payload: CommentProps) =>
+      state.map(news => {
+        if (news.id === payload.newsId) {
+          let commentsCopy = news.comments.slice();
+          let result = commentsCopy.filter(
+            comment => comment.id !== payload.id,
+          );
+          return {
+            ...news,
+            comments: result,
+          };
+        }
+        return news;
+      }),
+
     editNews: (state: State, payload: ItemProps) =>
       state.map(news => {
         if (news.id === payload.id) {

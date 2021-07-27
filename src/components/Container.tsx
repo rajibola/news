@@ -1,9 +1,9 @@
 import React, {FC} from 'react';
 import {StatusBar, Text, View} from 'react-native';
-import {ContainerProps} from '../types/types.d';
+import {ContainerProps as Props} from '../types/types.d';
 import {ContainerStyles as styles} from './styles';
 
-export const Container: FC<ContainerProps> = ({
+export const Container: FC<Props> = ({
   title,
   onPressBack,
   children,

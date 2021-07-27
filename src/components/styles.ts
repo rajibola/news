@@ -2,6 +2,19 @@ import {StyleSheet} from 'react-native';
 import {globalStyles, Colors} from '../constants';
 import {hp, wp} from '../utils/responsive-dimensions';
 
+export const ImageComponentStyles = StyleSheet.create({
+  small: {
+    height: hp(180),
+  },
+  big: {
+    height: hp(200),
+  },
+  image: {
+    flex: 1,
+    height: hp(180),
+  },
+});
+
 export const DialogBoxStyles = StyleSheet.create({
   boxContainer: {
     width: wp(300),

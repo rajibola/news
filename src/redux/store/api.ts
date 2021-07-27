@@ -14,6 +14,9 @@ export const loadNews = async () => {
   })) as ReadonlyArray<ItemProps>;
 };
 
+export const defaultImage =
+  'https://images.pexels.com/photos/3944454/pexels-photo-3944454.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500';
+
 export const newsModel: ItemProps = {
   id: 63327,
   title: 'CHRISTMAS AND COVID: HOLIDAY PREDICTION FOR 2020',
