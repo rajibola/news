@@ -1,6 +1,6 @@
 import MasonryList from '@react-native-seoul/masonry-list';
 import React, {FC, useEffect, useState} from 'react';
-import {Text} from 'react-native';
+import {Alert, Text} from 'react-native';
 import {CardComponent, Container, DialogBox} from '../../components';
 import {useRedux} from '../../hooks/useRedux';
 import {newsModel} from '../../redux/store/api';
@@ -16,14 +16,22 @@ export const Home: FC<Props> = ({navigation}) => {
 
   const {dispatch, news} = useRedux();
 
-  const onSubmit = () => {
-    dispatch.createNews({
-      ...newsModel,
-      id: generateNumberId(),
-      title,
-      summary,
-      author,
-    });
+  const onSubmit = async () => {
+    if (title.trim() && summary.trim() && author.trim()) {
+      await dispatch.createNews({
+        ...newsModel,
+        id: generateNumberId(),
+        title: title.trim(),
+        summary: summary.trim(),
+        author: author.trim(),
+      });
+
+      setTitle('');
+      setSummary('');
+      setAuthor('');
+    } else {
+      Alert.alert('Please enter valid data');
+    }
   };
 
   const onClickCreate = () => {

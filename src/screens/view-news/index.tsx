@@ -1,4 +1,5 @@
 import React, {FC, useState} from 'react';
+import {Alert} from 'react-native';
 import {
   FlatList,
   KeyboardAvoidingView,
@@ -44,12 +45,16 @@ export const ViewNews: FC<Props> = ({route, navigation}) => {
   };
 
   const onAddComment = () => {
-    dispatch.addComment({
-      newsId: item.id,
-      id: generateUId(),
-      author: commentAuthor,
-      content: comment,
-    });
+    if (commentAuthor.trim() && comment.trim()) {
+      dispatch.addComment({
+        newsId: item.id,
+        id: generateUId(),
+        author: commentAuthor,
+        content: comment,
+      });
+    } else {
+      Alert.alert('Please enter valid data');
+    }
   };
 
   const onDeleteNews = async () => {
@@ -68,28 +73,29 @@ export const ViewNews: FC<Props> = ({route, navigation}) => {
   const onSubmit = () => {
     switch (dialogType) {
       case 'news':
-        dispatch.editNews({
-          ...item,
-          summary,
-          author: newsAuthor,
-        });
+        if (summary.trim() && newsAuthor?.trim())
+          dispatch.editNews({
+            ...item,
+            summary,
+            author: newsAuthor,
+          });
         break;
 
       case 'comment':
-        setNewsAuthor('');
-        setSummary('');
-        dispatch.editComment({
-          newsId: item.id,
-          id: commentId,
-          author: newsAuthor,
-          content: summary,
-        });
+        if (summary.trim() && newsAuthor?.trim())
+          dispatch.editComment({
+            newsId: item.id,
+            id: commentId,
+            author: newsAuthor,
+            content: summary,
+          });
         break;
 
       default:
         break;
     }
-
+    setNewsAuthor('');
+    setSummary('');
     setShowDialog(false);
   };
 
