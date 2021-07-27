@@ -103,12 +103,13 @@ export interface CardProps {
 export interface ContainerProps {
   onPressBack?: () => void | Boolean;
   onPressRight?: () => void | Boolean;
-  rightText?: String;
-  title: String;
+  rightText?: string;
+  title: string;
   children: React.ReactNode;
 }
 
 export interface FontSizeProps {
+  color?: 'light' | 'dark';
   type: 'big' | 'small' | 'medium' | 'x-small';
   text: string | undefined;
   style?: TextStyle;

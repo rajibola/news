@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
-import {StatusBar, Text, View} from 'react-native';
+import {StatusBar, Text, TouchableOpacity, View} from 'react-native';
 import {ContainerProps as Props} from '../types/types.d';
+import {FontSize} from './FontSize';
 import {ContainerStyles as styles} from './styles';
 
 export const Container: FC<Props> = ({
@@ -14,15 +15,17 @@ export const Container: FC<Props> = ({
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
       <View style={styles.header}>
-        <Text onPress={onPressBack} style={styles.title}>
-          Back
-        </Text>
+        <TouchableOpacity onPress={onPressBack} style={styles.sideTitle}>
+          <FontSize text={onPressBack && 'Back'} type="small" color="light" />
+        </TouchableOpacity>
 
-        <Text style={styles.title}>{title}</Text>
+        <FontSize style={styles.title} text={title} type="medium" />
 
-        <Text onPress={onPressRight} style={styles.title}>
-          {rightText}
-        </Text>
+        <TouchableOpacity
+          onPress={onPressRight}
+          style={[styles.sideTitle, styles.rightText]}>
+          <FontSize text={onPressRight && rightText} type="medium" />
+        </TouchableOpacity>
       </View>
 
       {children}

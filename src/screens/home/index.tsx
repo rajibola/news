@@ -50,7 +50,7 @@ export const Home: FC<HomeProps> = ({navigation}) => {
         onPress={() => navigation.navigate('ViewNews', {item})}>
         <ImageComponent uri={item.media[0].url} type="small" />
         <View style={styles.textContainer}>
-          <FontSize text={item.title} type="medium" />
+          <FontSize text={item.title} type="small" />
         </View>
       </TouchableOpacity>
     );

@@ -14,7 +14,7 @@ import {CommentContainer} from '../../components/CommentContainer';
 import {ImageComponent} from '../../components/ImageComponent';
 import {RootDispatch, RootState} from '../../redux/store';
 import {CommentProps, ViewNewsProps} from '../../types/types';
-import {generateUId, hp, wp} from '../../utils';
+import {generateUId, hp} from '../../utils';
 import {styles} from './styles';
 
 export const ViewNews: FC<ViewNewsProps> = ({route, navigation}) => {
@@ -105,7 +105,11 @@ export const ViewNews: FC<ViewNewsProps> = ({route, navigation}) => {
           <View style={{position: 'relative', height: hp(300)}}>
             <ImageComponent uri={item.media[0].url} type="big" />
             <Text style={styles.absoluteView}>
-              <Text style={styles.title}>{filteredNews?.title}</Text>
+              <FontSize
+                style={styles.title}
+                text={filteredNews?.title}
+                type="big"
+              />
             </Text>
             <Button
               title="delete"
