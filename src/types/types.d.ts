@@ -28,9 +28,9 @@ export interface CommentSectionProps {
 }
 
 export interface CommentProps {
-  newsId: number;
+  newsId?: number;
   author?: string;
-  content: string;
+  content?: string;
   id?: string;
 }
 

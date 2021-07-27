@@ -12,7 +12,7 @@ import {CommentSection, Container, DialogBox, FontSize} from '../../components';
 import {CommentContainer} from '../../components/CommentContainer';
 import {ImageComponent} from '../../components/ImageComponent';
 import {RootDispatch, RootState} from '../../redux/store';
-import {ViewNewsProps} from '../../types/types';
+import {CommentProps, ItemProps, ViewNewsProps} from '../../types/types';
 import {generateUId, hp} from '../../utils';
 import {styles} from './styles';
 
@@ -29,8 +29,6 @@ export const ViewNews: FC<ViewNewsProps> = ({route, navigation}) => {
   const dispatch = useDispatch<RootDispatch>().news;
   const news = useSelector((state: RootState) => state.news);
   const filteredNews = news.find(a => a.id === item.id);
-
-  console.log(item);
 
   const onPressEdit = (type: 'news' | 'comment', commentId?: string) => {
     setDialogType(type);
@@ -49,6 +47,10 @@ export const ViewNews: FC<ViewNewsProps> = ({route, navigation}) => {
       author: commentAuthor,
       content: comment,
     });
+  };
+
+  const onDeleteComment = (comment: CommentProps) => {
+    dispatch.deleteComment({...comment});
   };
 
   const cancel = () => {
@@ -119,11 +121,14 @@ export const ViewNews: FC<ViewNewsProps> = ({route, navigation}) => {
             />
             <FlatList
               data={filteredNews?.comments}
-              renderItem={({item}) => (
+              renderItem={({item: comment}) => (
                 <CommentContainer
-                  onPressEdit={() => onPressEdit('comment', item.id)}
-                  comment={item.content}
-                  author={item.author}
+                  onPressEdit={() => onPressEdit('comment', comment.id)}
+                  onPressDelete={() =>
+                    onDeleteComment({...comment, newsId: item.id})
+                  }
+                  comment={comment.content}
+                  author={comment.author}
                 />
               )}
             />
