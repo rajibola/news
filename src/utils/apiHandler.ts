@@ -1,4 +1,4 @@
-import Axios, {AxiosRequestConfig, ResponseType, Method} from 'axios';
+import Axios, {AxiosRequestConfig, Method} from 'axios';
 export const BASE_URL =
   'https://api.clane.com/api/v1/news/v1/public/categories/10';
 /**
@@ -41,10 +41,9 @@ export const apiService = (
 
   const config: AxiosRequestConfig = {
     method: type,
-    url,
+    url: BASE_URL + url,
     data,
     headers: header,
-    baseURL: BASE_URL,
   };
 
   return new Promise((resolve, reject) => {

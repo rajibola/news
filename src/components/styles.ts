@@ -12,14 +12,16 @@ export const CardComponentStyles = StyleSheet.create({
     marginBottom: hp(7),
     borderRadius: hp(5),
     backgroundColor: Colors.white,
-    overflow: 'hidden',
     marginHorizontal: wp(4),
+    ...globalStyles.shadow,
   },
 });
 
 export const ImageComponentStyles = StyleSheet.create({
   small: {
     height: hp(180),
+    borderTopRightRadius: hp(4),
+    borderTopLeftRadius: hp(4),
   },
   big: {
     height: hp(200),
@@ -50,6 +52,9 @@ export const DialogBoxStyles = StyleSheet.create({
 });
 
 export const CommentSectionStyles = StyleSheet.create({
+  container: {
+    marginHorizontal: wp(10),
+  },
   buttonText: {
     color: Colors.white,
     fontSize: hp(18),
@@ -172,7 +177,7 @@ export const ContainerStyles = StyleSheet.create({
     paddingHorizontal: wp(15),
   },
   container: {
-    backgroundColor: Colors.grey02,
+    backgroundColor: Colors.white,
     flex: 1,
   },
 });

@@ -15,7 +15,6 @@ export const loadNews = async () => {
       comments: [],
     })) as ReadonlyArray<ItemProps>;
   } catch (error) {
-    console.log(error);
     Alert.alert('Press reload to refresh the screen');
   }
 };

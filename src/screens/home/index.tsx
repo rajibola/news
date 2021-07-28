@@ -47,7 +47,7 @@ export const Home: FC<Props> = ({navigation}) => {
   }, []);
 
   const _renderItem = ({item}: CardProps) => {
-    return <CardComponent navigation={navigation} item={item} />;
+    return <CardComponent navigation={navigation} item={item} key={item.id} />;
   };
 
   return (

@@ -4,6 +4,7 @@ import {Colors} from '../../constants/colors';
 import {hp, wp} from '../../utils/responsive-dimensions';
 
 export const styles = StyleSheet.create({
+  imageContainer: {position: 'relative', height: hp(300)},
   comment: {borderBottomWidth: 1, marginBottom: hp(10)},
   deleteButton: {
     position: 'absolute',
@@ -21,6 +22,7 @@ export const styles = StyleSheet.create({
     fontSize: hp(20),
     lineHeight: hp(26),
     marginVertical: hp(15),
+    marginHorizontal: wp(15),
     // color: Colors.white,
   },
   summaryContainer: {
@@ -32,6 +34,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingVertical: hp(3),
+    paddingHorizontal: wp(10),
   },
 
   title: {

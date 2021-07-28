@@ -9,11 +9,11 @@ export const CommentSection: FC<Props> = ({
   onChangeContent,
 }) => {
   return (
-    <View>
+    <View style={styles.container}>
       <TextInput
         multiline
         style={styles.multilineInput}
-        numberOfLines={4}
+        // numberOfLines={4}
         placeholder="Enter your comment"
         onChangeText={onChangeContent}
       />
