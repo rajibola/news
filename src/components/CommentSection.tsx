@@ -7,16 +7,20 @@ export const CommentSection: FC<Props> = ({
   onPress,
   onChangeAuthor,
   onChangeContent,
+  comment,
+  author,
 }) => {
   return (
     <View style={styles.container}>
       <TextInput
+        value={comment}
         style={styles.multilineInput}
         placeholder="Enter your comment"
         onChangeText={onChangeContent}
       />
 
       <TextInput
+        value={author}
         style={styles.authorInput}
         placeholder="Enter author's name"
         onChangeText={onChangeAuthor}

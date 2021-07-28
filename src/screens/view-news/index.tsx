@@ -47,14 +47,16 @@ export const ViewNews: FC<Props> = ({route, navigation}) => {
     setShowDialog(true);
   };
 
-  const onAddComment = () => {
+  const onAddComment = async () => {
     if (verifyInputs([commentAuthor, comment])) {
-      dispatch.addComment({
+      await dispatch.addComment({
         newsId: item.id,
         id: generateUId(),
         author: commentAuthor.trim(),
         content: comment.trim(),
       });
+      setCommentAuthor('');
+      setComment('');
     } else {
       Alert.alert('Please enter valid data');
     }
@@ -160,6 +162,8 @@ export const ViewNews: FC<Props> = ({route, navigation}) => {
         onPress={onAddComment}
         onChangeAuthor={setCommentAuthor}
         onChangeContent={setComment}
+        comment={comment}
+        author={commentAuthor}
       />
     );
   };

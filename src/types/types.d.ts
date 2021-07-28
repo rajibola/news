@@ -34,6 +34,8 @@ export interface CommentSectionProps {
   onPress?: () => void;
   onChangeAuthor?: (text: string) => void;
   onChangeContent?: (text: string) => void;
+  comment?: string;
+  author?: string;
 }
 
 export interface CommentProps {
