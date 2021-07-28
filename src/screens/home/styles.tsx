@@ -1,9 +1,13 @@
-import {useMemo} from 'react';
 import {StyleSheet} from 'react-native';
 import {Colors} from '../../constants/colors';
-import {wp, hp} from '../../utils/responsive-dimensions';
+import {hp, wp} from '../../utils/responsive-dimensions';
 
 export const styles = StyleSheet.create({
+  loading: {
+    alignSelf: 'center',
+    marginTop: hp(150),
+    fontWeight: 'bold',
+  },
   masonry: {
     paddingHorizontal: wp(8),
     alignSelf: 'stretch',

@@ -1,7 +1,7 @@
 import MasonryList from '@react-native-seoul/masonry-list';
 import React, {FC, useEffect, useState} from 'react';
-import {Alert, Text} from 'react-native';
-import {CardComponent, Container, DialogBox} from '../../components';
+import {Alert} from 'react-native';
+import {CardComponent, Container, DialogBox, FontSize} from '../../components';
 import {useRedux} from '../../hooks/useRedux';
 import {newsModel} from '../../redux/store/api';
 import {CardProps, HomeProps as Props} from '../../types/types.d';
@@ -29,6 +29,7 @@ export const Home: FC<Props> = ({navigation}) => {
       setTitle('');
       setSummary('');
       setAuthor('');
+      setShowDialog(false);
     } else {
       Alert.alert('Please enter valid data');
     }
@@ -51,9 +52,17 @@ export const Home: FC<Props> = ({navigation}) => {
   };
 
   return (
-    <Container title="NEWS" rightText="Create" onPressRight={onClickCreate}>
+    <Container
+      title="NEWS"
+      rightText="Create"
+      onPressRight={onClickCreate}
+      disabled={!news.length}>
       {!news.length ? (
-        <Text>News is loading ...</Text>
+        <FontSize
+          text=" News is loading ..."
+          type="big"
+          style={styles.loading}
+        />
       ) : (
         <MasonryList
           contentContainerStyle={styles.masonry}

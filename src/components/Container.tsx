@@ -10,9 +10,11 @@ export const Container: FC<Props> = ({
   children,
   onPressRight,
   rightText,
+  disabled,
 }) => {
+  const container = disabled ? 'disabled' : 'functional';
   return (
-    <View style={styles.container}>
+    <View style={styles[container]}>
       <StatusBar barStyle="light-content" />
       <View style={styles.header}>
         <TouchableOpacity onPress={onPressBack} style={styles.sideTitle}>
@@ -23,7 +25,8 @@ export const Container: FC<Props> = ({
 
         <TouchableOpacity
           onPress={onPressRight}
-          style={[styles.sideTitle, styles.rightText]}>
+          style={[styles.sideTitle, styles.rightText]}
+          disabled={disabled}>
           <FontSize text={onPressRight && rightText} type="medium" />
         </TouchableOpacity>
       </View>

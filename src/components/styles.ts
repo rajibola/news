@@ -146,6 +146,12 @@ export const FontSizeStyles = StyleSheet.create({
 });
 
 export const ContainerStyles = StyleSheet.create({
+  functional: {backgroundColor: Colors.white, flex: 1},
+  disabled: {
+    backgroundColor: Colors.white,
+    flex: 1,
+    alignItems: 'center',
+  },
   rightText: {
     backgroundColor: Colors.white,
     color: Colors.grey02,
@@ -168,6 +174,7 @@ export const ContainerStyles = StyleSheet.create({
   },
   header: {
     height: hp(70),
+    width: '100%',
     backgroundColor: Colors.grey04,
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -175,9 +182,5 @@ export const ContainerStyles = StyleSheet.create({
     borderTopColor: Colors.grey04,
     flexDirection: 'row',
     paddingHorizontal: wp(15),
-  },
-  container: {
-    backgroundColor: Colors.white,
-    flex: 1,
   },
 });

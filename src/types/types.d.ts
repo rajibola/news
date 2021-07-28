@@ -121,6 +121,7 @@ export interface ContainerProps {
   rightText?: string;
   title: string;
   children: React.ReactNode;
+  disabled?: boolean;
 }
 
 export interface FontSizeProps {
