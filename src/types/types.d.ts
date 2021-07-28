@@ -20,20 +20,20 @@ export type CommentContainerProps = {
 
 export interface DialogBoxProps {
   show: boolean;
-  onPressCancel: () => void;
-  onChangeAuthor: (text: string) => void;
-  onChangeContent: (text: string) => void;
+  onPressCancel?: () => void;
+  onChangeAuthor?: (text: string) => void;
+  onChangeContent?: (text: string) => void;
   onChangeTitle?: (text: string) => void;
-  onPressSubmit: () => void;
-  authorValue?: string;
+  onPressSubmit?: () => void;
+  authorValue: string;
   summaryValue: string;
   title?: string;
 }
 
 export interface CommentSectionProps {
-  onPress: () => void;
-  onChangeAuthor: (text: string) => void;
-  onChangeContent: (text: string) => void;
+  onPress?: () => void;
+  onChangeAuthor?: (text: string) => void;
+  onChangeContent?: (text: string) => void;
 }
 
 export interface CommentProps {
@@ -106,8 +106,8 @@ export interface ItemProps {
 
 export interface CardComponentProps {
   item: ItemProps;
-  index?: Number;
-  navigation: HomeNavigationProp;
+  index?: number;
+  navigation?: HomeNavigationProp;
 }
 
 export interface CardProps {

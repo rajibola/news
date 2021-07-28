@@ -9,7 +9,7 @@ export const CardComponent: FC<Props> = ({navigation, item}) => {
     <TouchableOpacity
       style={styles.newsCard}
       key={item.id}
-      onPress={() => navigation.navigate('ViewNews', {item})}>
+      onPress={() => navigation?.navigate('ViewNews', {item})}>
       <ImageComponent uri={item.media[0].url} type="small" />
       <View style={styles.textContainer}>
         <FontSize text={item.title} type="small" />
