@@ -35,6 +35,7 @@ $ cd .. && yarn run ios
 ### Task
 
 > Build a News App
+
 > Perform CRUD actions on news and comments
 
 ## Technologies Used
