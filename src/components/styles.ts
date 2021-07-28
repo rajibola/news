@@ -75,7 +75,7 @@ export const CommentSectionStyles = StyleSheet.create({
     paddingHorizontal: wp(10),
   },
   multilineInput: {
-    height: hp(100),
+    // height: hp(100),
     paddingHorizontal: wp(10),
     paddingVertical: hp(10),
     borderWidth: 1,

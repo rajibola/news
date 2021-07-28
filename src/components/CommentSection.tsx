@@ -11,9 +11,7 @@ export const CommentSection: FC<Props> = ({
   return (
     <View style={styles.container}>
       <TextInput
-        multiline
         style={styles.multilineInput}
-        // numberOfLines={4}
         placeholder="Enter your comment"
         onChangeText={onChangeContent}
       />

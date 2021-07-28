@@ -32,14 +32,12 @@ export const DialogBox: FC<Props> = ({
             {onChangeTitle && (
               <Input
                 placeholder="Title"
-                multiline
                 onChangeText={onChangeTitle}
                 defaultValue={title}
               />
             )}
             <Input
               placeholder="Content"
-              multiline
               onChangeText={onChangeContent}
               defaultValue={summaryValue}
             />

@@ -1,11 +1,14 @@
 import {StyleSheet} from 'react-native';
-import {globalStyles} from '../../constants';
 import {Colors} from '../../constants/colors';
 import {hp, wp} from '../../utils/responsive-dimensions';
 
 export const styles = StyleSheet.create({
   imageContainer: {position: 'relative', height: hp(300)},
-  comment: {borderBottomWidth: 1, marginBottom: hp(10)},
+  comment: {
+    borderBottomWidth: 1,
+    marginBottom: hp(10),
+    marginHorizontal: wp(18),
+  },
   deleteButton: {
     position: 'absolute',
     alignSelf: 'flex-end',
