@@ -1,6 +1,4 @@
-# News App
-
-# tic-tac-toe [![rajibola](https://circleci.com/gh/rajibola/news.svg?style=svg)](https://app.circleci.com/pipelines/github/rajibola/news)
+# News App [![rajibola](https://circleci.com/gh/rajibola/news.svg?style=svg)](https://app.circleci.com/pipelines/github/rajibola/news)
 
 <span>
 <img src="./docs/assets/preview.gif" alt="preview"  width="270" />
